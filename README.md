@@ -25,4 +25,4 @@
 ![image](https://raw.githubusercontent.com/yangmv/k8sMG/master/images/04.png)
 
 #### 发布详情
-![image](https://raw.githubusercontent.com/yangmv/k8sMG/master/images/06.png)
+![image](https://raw.githubusercontent.com/yangmv/k8sMG/master/images/05.png)
