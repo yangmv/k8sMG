@@ -37,7 +37,7 @@ cat >> /etc/supervisord.conf <<EOF
 command=python3 startup.py --service=k8s_mg --port=90%(process_num)02d
 process_name=%(program_name)s_%(process_num)02d
 numprocs=3
-directory=/var/www/k8s
+directory=/var/www/k8sMG
 user=root
 autostart = true
 autorestart=true
@@ -51,7 +51,7 @@ logfile_backups=3
 command=python3 startup.py --service=k8s_task --port=91%(process_num)02d
 process_name=%(program_name)s_%(process_num)02d
 numprocs=3
-directory=/var/www/k8s
+directory=/var/www/k8sMG
 user=root
 autostart = true
 autorestart=true
@@ -65,7 +65,7 @@ logfile_backups=3
 command=python3 startup.py --service=k8s_ws --port=92%(process_num)02d
 process_name=%(program_name)s_%(process_num)02d
 numprocs=
-directory=/var/www/k8s
+directory=/var/www/k8sMG
 user=root
 autostart = true
 autorestart=true
