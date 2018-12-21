@@ -11,7 +11,15 @@
 - 发布管理，整个项目发布，单个应用发布，发布审核
 
 
-### 部署
+### 一键部署
+```
+docker build -t k8smg .
+pip3 install docker-compose
+docker-compose up -d
+```
+
+
+### 人工部署
 #### 一 安装依赖
 ```
 pip3 install --upgrade pip

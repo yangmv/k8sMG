@@ -25,5 +25,4 @@ def drop():
     Base.metadata.drop_all(engine)
 
 if __name__ == '__main__':
-    #create()
-    print(111)
+    create()
