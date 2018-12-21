@@ -81,7 +81,7 @@ LISTENERS = {}
 
 
 index_urls = [
-    (r'/ws/', WebSocketHandler),
+    (r'/v1/k8s-ws/', WebSocketHandler),
     (r'/ws_test/', WsTestHandler)
 ]
 

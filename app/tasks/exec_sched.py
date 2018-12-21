@@ -18,6 +18,7 @@ class DealMQ(MessageQueueBase):
                                      queue_name='deal_task_sched', no_ack=False)
     def on_message(self, body):
         print('[on_message]')
+        #return 1
         #body消息内容,内容为 [task ID]
         ins_log.read_log('info', 'flow_id is {}'.format(body))
         flow_id = int(body)

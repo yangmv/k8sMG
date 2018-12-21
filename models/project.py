@@ -136,17 +136,3 @@ class User(Base):
     # 返回一个可以用来表示对象的可打印字符串
     def __repr__(self):
         return '%s:%s'%(self.id,self.name)
-
-
-#ORM创建表结构
-from sqlalchemy import create_engine
-engine = create_engine('mysql+pymysql://root:chaBUljXrcyn74F@172.16.0.121:3306/k8s_ops?charset=utf8', encoding='utf-8',echo=True)
-
-def create():
-    Base.metadata.create_all(engine)
-def drop():
-    Base.metadata.drop_all(engine)
-
-if __name__ == '__main__':
-    #drop()
-    create()

@@ -10,11 +10,11 @@ from app.ws.applications import Application as WsApp
 define("service", default='api', help="start service flag", type=str)
 class My():
     def __init__(self,service):
-        if service == 'mg':
+        if service == 'k8s_mg':
             self.app = MgApp(**app_settings)
-        elif service == 'exec_task':
+        elif service == 'k8s_task':
             self.app = DealApp(**app_settings)
-        elif service == 'ws':
+        elif service == 'k8s_ws':
             self.app = WsApp(**app_settings)
         self.app.start_server()
 
