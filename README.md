@@ -26,3 +26,7 @@
 
 #### 发布详情
 ![image](https://raw.githubusercontent.com/yangmv/k8sMG/master/images/05.png)
+
+## License
+
+Everything is [GPL v3.0](https://www.gnu.org/licenses/gpl-3.0.html).
