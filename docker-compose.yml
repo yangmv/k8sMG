@@ -3,6 +3,7 @@ k8smg:
   image: k8smg:latest
   volumes:
     - /var/log/supervisor/:/var/log/supervisor/
+    - /var/www/k8sMG/:/var/www/k8sMG/
     - /sys/fs/cgroup:/sys/fs/cgroup
   ports:
     - "8001:80"
@@ -11,4 +12,4 @@ k8smg:
 
   # docker-compose up -d
   # docker-compose down
-  # 接口测试: http://k8s.yangmv.com:8001/v1/k8s/publish/
+  # 接口测试: http://k8s.opendevops.cn:8001/v1/k8s/publish/

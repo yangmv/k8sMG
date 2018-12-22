@@ -35,6 +35,7 @@ cp settings_example.py settings.py
 
 #### 三 创建表结构
 ```
+mysql -h 127.0.0.1 -u root -p123456 -e "create database k8s default character set utf8mb4 collate utf8mb4_unicode_ci;"
 python3 models/db_sync.py
 ```
 
