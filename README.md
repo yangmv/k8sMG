@@ -139,6 +139,9 @@ location /v1/k8s-ws/ {
 #### 发布详情
 ![image](https://raw.githubusercontent.com/yangmv/k8sMG/master/images/05.png)
 
+
+### [测试Demo](https://github.com/yangmv/flask-demo.git)
+
 ## License
 
 Everything is [GPL v3.0](https://www.gnu.org/licenses/gpl-3.0.html).
