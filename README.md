@@ -104,6 +104,17 @@ upstream  k8s_ws{
     server  127.0.0.1:9202;
 }
 
+location /v1/k8s/ws/ {
+        #proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Scheme $scheme;
+        proxy_pass http://k8s_ws;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+}
+
 location /v1/k8s/ {
         proxy_set_header Host $http_host;
         proxy_redirect off;
@@ -111,15 +122,6 @@ location /v1/k8s/ {
         proxy_set_header X-Scheme $scheme;
         proxy_pass http://k8s_mg;
 }
-
-location /v1/k8s-ws/ {
-        proxy_set_header Host $http_host;
-        proxy_redirect off;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Scheme $scheme;
-        proxy_pass http://k8s_ws;
-}
-
 ```
 
 
