@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f31d8cd6-b3b1-4bab-9927-9b09bf893861" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/yangmv.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/k8sMG.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/mg/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/ws/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mg/applications.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/mg/applications.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mg/handlers/app_handle.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/mg/handlers/app_handle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mg/handlers/index_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/mg/handlers/index_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/mg/handlers/publish_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/mg/handlers/publish_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tasks/exec_list/publish.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tasks/exec_list/publish.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tasks/exec_sched.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tasks/exec_sched.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ws/applications.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ws/applications.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ws/handlers/index_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/ws/handlers/index_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/jenkins_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/libs/jenkins_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/project.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/project.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +124,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -171,7 +153,7 @@
       <workItem from="1555038564595" duration="6000" />
       <workItem from="1559282208732" duration="1106000" />
       <workItem from="1563333264145" duration="1086000" />
-      <workItem from="1701917666405" duration="306000" />
+      <workItem from="1701917666405" duration="1468000" />
     </task>
     <servers />
   </component>
@@ -208,6 +190,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/PycharmProjectsPy3/Env/k8sMG/lib/python3.6/site-packages/tornado/web.py">
