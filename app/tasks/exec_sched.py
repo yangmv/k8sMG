@@ -9,6 +9,7 @@ from models.project import Publish,Task
 from app.tasks.exec_list.publish import TaskPublish
 from datetime import datetime
 import threading
+import sys
 
 class DealMQ(MessageQueueBase):
     """接受MQ消息 根据订单ID和分组 多线程执行任务"""
@@ -25,7 +26,6 @@ class DealMQ(MessageQueueBase):
 
         with DBContext('readonly') as session:
             status = session.query(Publish).filter(Publish.id == flow_id).first().status
-            print(status)
 
         if status == '0':
             self.exec_task(flow_id,'qa')
@@ -52,10 +52,17 @@ class DealMQ(MessageQueueBase):
             end_sleep += int_sleep
             if int_sleep > 15: int_sleep = 15
             with DBContext('readonly') as session:
-                check_status = session.query(Publish).filter(Publish.id == flow_id, Publish.status == '2').first()
-            #status==2,那么继续循环并sleep任务,直到任务被接手
-            if check_status:break
+                check_status = session.query(Publish).filter(Publish.id == flow_id).first()
+            
+            if check_status.status == '2':
+                #status==2,那么继续循环并sleep任务,直到任务被接手
+                break
+            if check_status.status == '4':
+                #status==-2,那么那么表示任务已完成(人工中止)
+                print('The task is finished')
+                sys.exit(10)
             if end_sleep > 150:raise SystemExit('message timeout')
+            #需要增加一个任务中止的功能
 
         #开始发正式环境
         print('start release......')
@@ -79,7 +86,7 @@ class DealMQ(MessageQueueBase):
 
                 print('start exec....')
                 domain = 'qa-%s.%s'%(app.name,'yangmv.com') if env == 'qa' else '%s.%s'%(app.name,'yangmv.com')
-                tasks = TaskPublish(task_obj.id,app.name,app.port,domain,env)
+                tasks = TaskPublish(task_obj.id,app.name,app.git_url,domain,env)
                 job_ret = tasks.task_exec()
                 if job_ret['status']:
                     print('ok')
@@ -89,7 +96,7 @@ class DealMQ(MessageQueueBase):
                     task_obj.end_exe_time = datetime.now()
                 else:
                     print('no ok')
-                    task_obj.status = '0'
+                    task_obj.status = job_ret['task_status']
                     task_obj.logs = job_ret['log']
                     lock.acquire()  # 加锁
                     Error_TAG.append(task_obj.id)

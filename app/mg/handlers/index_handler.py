@@ -40,7 +40,7 @@ class EnvHandler(BaseHandler):
             if not ret['msg']:ret['msg'] = str(e)
         self.write(ret)
 
-class ListHandler(BaseHandler):
+class indexListHandler(BaseHandler):
     def get(self, args=None):
         '''获取project信息'''
         ret = dict(status=True,msg=None,data=None)
@@ -131,7 +131,7 @@ class ListHandler(BaseHandler):
             owner_list = data.get("owner")
 
 
-            check = [name,app_list,env_list,owner_list]
+            check = [name,app_list,owner_list]
             if not all(check):
                 ret['msg'] = '必要字段不能为空'
                 raise Exception
@@ -170,7 +170,7 @@ class ListHandler(BaseHandler):
                 project = session.query(Project).filter(Project.id == args).first()
                 if not project:
                     ret['msg'] = '资源不存在'
-                    raise
+                    raise Exception
                 session.delete(project)
                 session.commit()
                 ret['data'] = model_to_dict(project)
@@ -181,8 +181,8 @@ class ListHandler(BaseHandler):
             if not ret['msg']:ret['msg'] = str(e)
         self.write(ret)
 
-index_urls = [
-    (r"/v1/k8s/project/?(\w+)?/", ListHandler),
-    (r"/v1/k8s/env/", EnvHandler),
-    (r"/v1/k8s/user/", UserHandler)
-]
+# index_urls = [
+#     (r"/v1/k8s/project/?(\w+)?/", ListHandler),
+#     (r"/v1/k8s/env/", EnvHandler),
+#     (r"/v1/k8s/user/", UserHandler)
+# ]

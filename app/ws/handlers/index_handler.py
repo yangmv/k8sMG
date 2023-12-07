@@ -80,9 +80,9 @@ def tail_file():
 LISTENERS = {}
 
 
-index_urls = [
-    (r'/v1/k8s/ws/', WebSocketHandler),
-    (r'/ws_test/', WsTestHandler)
-]
+# index_urls = [
+#     (r'/v1/k8s/ws/', WebSocketHandler),
+#     (r'/ws_test/', WsTestHandler)
+# ]
 
 

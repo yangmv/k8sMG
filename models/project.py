@@ -64,7 +64,7 @@ class Task(Base):
     logs = Column(Text(),nullable=True)  #执行的日志
     start_exe_time = Column(DateTime())
     end_exe_time = Column(DateTime())
-    status = Column(String(8),default='0')
+    status = Column(String(8),default='-1')
 
 
 
@@ -95,7 +95,7 @@ class App(Base):
     __tablename__ = 'app'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(32), unique=True)
-    port = Column(String(32))
+    # port = Column(String(32))
     desc = Column(Text(),nullable=True)
     git_url = Column(String(64))
     ctime = Column(DateTime(), default=datetime.now)

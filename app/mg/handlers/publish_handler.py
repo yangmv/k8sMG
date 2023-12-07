@@ -30,8 +30,6 @@ class TaskHandler(BaseHandler):
                 if not res:
                     ret['msg'] = '资源不存在'
                     raise Exception
-                print(res.name)
-                print(res.status)
                 ret['data'] = model_to_dict(res)
                 ret['msg'] = '获取资源成功'
 
@@ -67,6 +65,8 @@ class JobExecHandler(BaseHandler):
     def post(self,args=None):
         '''执行job任务'''
         ret = dict(status=True,msg=None,data=None)
+        print('start exec job....')
+        print(args)
         try:
             if not args:
                 ret['msg'] = 'arg缺少必要参数'
@@ -83,6 +83,7 @@ class JobExecHandler(BaseHandler):
             print(e)
             ret['status'] = False
             if not ret['msg']:ret['msg'] = str(e)
+        print(ret)
         self.write(ret)
 
 class PublishHandler(BaseHandler):
@@ -175,9 +176,9 @@ class PublishHandler(BaseHandler):
         self.write(ret)
 
 
-index_urls = [
-    (r"/v1/k8s/publish/?(\w+)?/", PublishHandler),
-    (r"/v1/k8s/job/log/", JobLogHandler),
-    (r"/v1/k8s/job/exec/?(\w+)?/", JobExecHandler),
-    (r"/v1/k8s/job/detail/", TaskHandler)
-]
+# index_urls = [
+#     (r"/v1/k8s/publish/?(\w+)?/", PublishHandler),
+#     (r"/v1/k8s/job/log/", JobLogHandler),
+#     (r"/v1/k8s/job/exec/?(\w+)?/", JobExecHandler),
+#     (r"/v1/k8s/job/detail/", TaskHandler)
+# ]

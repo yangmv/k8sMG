@@ -1,0 +1,15 @@
+__pycache__/
+settings.py
+logs
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# mypy
+.mypy_cache/
+
+.idea

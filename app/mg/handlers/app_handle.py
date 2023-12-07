@@ -10,7 +10,7 @@ from libs.db_context import DBContext
 from models.project import App,Project,Env,User,model_to_dict
 import json
 
-class ListHandler(BaseHandler):
+class appListHandler(BaseHandler):
     def get(self, args=None):
         '''获取project信息'''
         ret = dict(status=True,msg=None,data=None)
@@ -37,7 +37,6 @@ class ListHandler(BaseHandler):
             ret['status'] = False
             if not ret['msg']:ret['msg'] = str(e)
         self.write(ret)
-
 
     def post(self, *args, **kwargs):
         '''新增project'''
@@ -123,7 +122,7 @@ class ListHandler(BaseHandler):
                 project = session.query(Project).filter(Project.id == args).first()
                 if not project:
                     ret['msg'] = '资源不存在'
-                    raise
+                    raise Exception
                 session.delete(project)
                 session.commit()
                 ret['data'] = model_to_dict(project)
@@ -134,7 +133,6 @@ class ListHandler(BaseHandler):
             if not ret['msg']:ret['msg'] = str(e)
         self.write(ret)
 
-
-index_urls = [
-    (r"/v1/k8s/app/?(\w+)?/", ListHandler)
-]
+# index_urls = [
+#     (r"/v1/k8s/app/?(\w+)?/", ListHandler)
+# ]

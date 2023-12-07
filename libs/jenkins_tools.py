@@ -6,13 +6,15 @@
 @time: 18/11/7下午4:33
 '''
 import jenkins
-import json
 from settings import jenkins_conf as conf
 import requests
 from requests.auth import HTTPBasicAuth
 
 class JenkinsAPI():
     def __init__(self):
+        # self.url = 'http://212.64.39.210:30002'
+        # self.user = 'admin'
+        # self.pwd = '123456'
         self.url = conf['url']
         self.user = conf['user']
         self.pwd = conf['pwd']
@@ -42,11 +44,15 @@ class JenkinsAPI():
     def check_is_build(self,job_name):
         '''检查项目是否正在build'''
         try:
-            last_build = int(self.get_job_info(job_name)['lastBuild']['number'])
-            ret = self.get_build_info(job_name,last_build)
-            return ret['building']
+            last_build = self.get_job_info(job_name)['lastBuild']
+            if last_build:
+                last_build = int(last_build['number'])
+                ret = self.get_build_info(job_name,last_build)
+                return ret['building']
+            else:
+                return False
         except Exception as e:
-            print(e)
+            print('check_is_build [error]-->',e)
             return True
 
     def build_job(self,job_name):
@@ -77,4 +83,4 @@ class JenkinsAPI():
 
 if __name__ == '__main__':
     obj = JenkinsAPI()
-    obj.build_job('flask-demo')
+    obj.check_is_build('codo-cmdb')

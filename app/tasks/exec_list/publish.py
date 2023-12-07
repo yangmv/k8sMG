@@ -11,17 +11,17 @@ from settings import jenkins_conf,BASE_DIR
 from libs.tools import exec_shell
 
 class TaskPublish():
-    def __init__(self,task_id,app_name,port,domain,env):
+    def __init__(self,task_id,app_name,git_url,domain,env):
         self.flag = True
         self.task_id = task_id
         self.app_name = app_name
-        self.port = port
+        self.git_url = git_url
         self.domain = domain
         self.env = env
 
     def task_exec(self):
         '''发布任务'''
-        ret = dict(status=False,job_id=None,job_name=None)
+        ret = dict(status=False,job_id=None,job_name=None,task_status='-1')
         try:
             # jenkins开始调度发布
             obj = JenkinsAPI()
@@ -29,9 +29,10 @@ class TaskPublish():
             is_bulid = obj.check_is_build(self.app_name)
             if is_bulid:
                 ret['log'] = '[%s]正在bulid中'%self.app_name
+                ret['task_status'] = '0'
                 raise Exception
             else:
-                param_dict= {'domain': self.domain,'port': self.port,'namespace': self.env}
+                param_dict= {'domain': self.domain,'git_url': self.git_url,'namespace': self.env}
                 print('param_dict->>>>>>>',param_dict)
                 #job_id = obj.build_job(project_name)
                 job_id = obj.build_job_param(self.app_name,param_dict)
@@ -41,6 +42,7 @@ class TaskPublish():
                     while True:
                         time.sleep(0.5)
                         check_status = obj.check_is_build(self.app_name)
+                        #print('check_status--->',check_status)
                         self.task_log(job_id)
                         if not check_status:
                             self.flag = False
@@ -64,5 +66,4 @@ class TaskPublish():
         cmd = 'wget -c -t 10 %s/job/%s/%s/consoleText  --user=%s --password=%s --auth-no-challenge -O ' \
               '%s/%s.log'%(jenkins_conf['url'],self.app_name,job_id,jenkins_conf['user'],
                            jenkins_conf['pwd'],log_dir,self.task_id)
-        #print(cmd)
         exec_shell(cmd)
